@@ -1,5 +1,5 @@
 // Bump VERSION whenever you change any file, so phones pick up the update.
-const VERSION = "rodeo-v1";
+const VERSION = "rodeo-v3";
 const FILES = [
   "./",
   "index.html",
@@ -8,6 +8,8 @@ const FILES = [
   "icons/icon-512.png",
   "icons/maskable-512.png",
   "icons/apple-touch-icon.png",
+  "img/hero.jpg",
+  "img/cowgirl.png",
   "fonts/big-shoulders-display-latin-700-normal.woff2",
   "fonts/big-shoulders-display-latin-900-normal.woff2",
   "fonts/atkinson-hyperlegible-latin-400-normal.woff2",

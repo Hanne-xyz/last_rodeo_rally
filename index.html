@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Last Rodeo Rally</title>
 <meta name="description" content="Offline field guide for the Last Rodeo Rally, Arizona 2026">
-<meta name="theme-color" content="#EDF0EA" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#121714" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F7EFEC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1A1311" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -31,24 +31,24 @@ body{margin:0}
 <style>
 /* Layout: one-column field guide, sticky header with unit switch, bottom tab bar; stops read like a mile-marker log. */
 :root{
-  --bg:#EDF0EA; --surface:#FFFFFF; --sunk:#E1E6DE; --ink:#18201B; --muted:#56635A; --line:#C9D1C6;
-  --accent:#0B7A75; --accent-ink:#FFFFFF; --accent-soft:#D3ECE9;
+  --bg:#F7EFEC; --surface:#FFFFFF; --sunk:#F1E3DF; --ink:#2A1F1B; --muted:#6B5550; --line:#E3CEC8;
+  --accent:#A8433F; --accent-ink:#FFFFFF; --accent-soft:#F6DAD7; --rodeo:#DA8887;
   --water:#1D6FB8; --water-soft:#DDEBF7; --warn:#A65F00; --warn-soft:#FBEBD2; --bad:#B42318; --bad-soft:#FBE1DE; --ok:#2E7D32;
-  --profile:#7A8F7F; --profile-fill:#C9D4C6;
+  --profile:#9A7A73; --profile-fill:#EDD6D1;
   --f-display:"Big Shoulders Display","Arial Narrow","Roboto Condensed",Impact,sans-serif;
   --f-body:"Atkinson Hyperlegible",-apple-system,"Segoe UI",Roboto,sans-serif;
   --f-num:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#121714; --surface:#1B221D; --sunk:#232C26; --ink:#E8EEE8; --muted:#9DAAA0; --line:#334038;
-  --accent:#4FC2BA; --accent-ink:#0B1A18; --accent-soft:#163633;
+  --bg:#1A1311; --surface:#241A17; --sunk:#2F231F; --ink:#F3E8E4; --muted:#BBA39C; --line:#45342F;
+  --accent:#E8948F; --accent-ink:#2A1210; --accent-soft:#45231F; --rodeo:#B86B69;
   --water:#6FB1EE; --water-soft:#16283A; --warn:#F0B35A; --warn-soft:#33270F; --bad:#F2877C; --bad-soft:#3A1814; --ok:#7CC981;
-  --profile:#7FA08A; --profile-fill:#2A3A30; color-scheme:dark}}
+  --profile:#C49A92; --profile-fill:#3A2925; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#121714; --surface:#1B221D; --sunk:#232C26; --ink:#E8EEE8; --muted:#9DAAA0; --line:#334038;
-  --accent:#4FC2BA; --accent-ink:#0B1A18; --accent-soft:#163633;
+  --bg:#1A1311; --surface:#241A17; --sunk:#2F231F; --ink:#F3E8E4; --muted:#BBA39C; --line:#45342F;
+  --accent:#E8948F; --accent-ink:#2A1210; --accent-soft:#45231F; --rodeo:#B86B69;
   --water:#6FB1EE; --water-soft:#16283A; --warn:#F0B35A; --warn-soft:#33270F; --bad:#F2877C; --bad-soft:#3A1814; --ok:#7CC981;
-  --profile:#7FA08A; --profile-fill:#2A3A30; color-scheme:dark}
+  --profile:#C49A92; --profile-fill:#3A2925; color-scheme:dark}
 *{box-sizing:border-box}
 html,body{background:var(--bg)}
 body{color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.45;padding-inline:16px;padding-block:0 96px;-webkit-text-size-adjust:100%}
@@ -172,12 +172,18 @@ details.more[open]>summary::before{content:"–"}
 .gap-row .d small{display:block;color:var(--muted);font-size:12px;font-weight:500}
 .hint{font-size:13px;color:var(--muted)}
 .big-h{font-size:34px;font-weight:900;text-transform:uppercase;line-height:.95}
+
+.brand-row{display:flex;align-items:center;gap:10px;min-width:0}
+.brand-row img{width:40px;height:40px;border-radius:10px;background:var(--rodeo);flex:0 0 auto}
+.hero{margin:0;border-radius:14px;overflow:hidden;background:var(--rodeo);border:1px solid var(--line)}
+.hero img{display:block;width:100%;height:auto}
+.hero figcaption{font-size:11px;color:var(--muted);padding:6px 10px;background:var(--surface);letter-spacing:.03em}
 @media (prefers-reduced-motion:no-preference){.view{animation:in .18s ease-out}@keyframes in{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}}
 </style>
 
 <div class="wrap">
   <header class="top">
-    <div class="brand"><b>Last Rodeo Rally</b><span>AZ Rally 2026 · Field Guide</span></div>
+    <div class="brand-row"><img src="img/cowgirl.png" alt=""><div class="brand"><b>Last Rodeo Rally</b><span>AZ Rally 2026 · Field Guide</span></div></div>
     <div class="units" role="group" aria-label="Units">
       <button id="u-metric" aria-pressed="true">km · m</button>
       <button id="u-imp" aria-pressed="false">mi · ft</button>
@@ -403,6 +409,7 @@ function renderNow(){
 function renderDays(){
   const tot=DAYS.reduce((a,d)=>a+d.km,0), gain=DAYS.reduce((a,d)=>a+d.gain,0);
   document.getElementById("v-days").innerHTML=`
+    ${HERO}
     <div class="card"><h1 class="big-h">8 Stages</h1>
       <div class="stats">
         <div class="stat"><div class="k">Distance</div><div class="v">${distStack(tot)}</div></div>
@@ -449,6 +456,7 @@ function renderInfo(){
     ["Pilot Rio Rico (D6) → Arivaca (D7)","Water, incl. dry night 6",57]
   ];
   document.getElementById("v-info").innerHTML=`
+    ${HERO}
     <div class="alert"><b class="h">Water safety: read before the ride</b><ul>
       <li>Carry at least <b>3 L (≈ 100 fl oz)</b> on the bike at all times, plus extra bottles for electrolytes.</li>
       <li>Filtering natural water is mostly <b>not an option</b>: creeks around Patagonia (Harshaw Creek, Sonoita Creek tributaries, Alum Gulch, Flux Canyon) carry acid mine drainage with heavy metals. Standard filters don't remove dissolved metals.</li>
@@ -481,6 +489,7 @@ function renderInfo(){
     </div>`;
 }
 
+const HERO=`<figure class="hero"><img src="img/hero.jpg" alt="Women's Backyard Rally, Arizona Edition: Final Rodeo. Lael &amp; GRL PCK" width="1200" height="671"></figure>`;
 const R={now:renderNow,days:renderDays,stops:renderStops,info:renderInfo};
 function setView(v){ view=v; save();
   document.querySelectorAll("nav.tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===v));
