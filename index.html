@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Last Rodeo Rally</title>
+<meta name="description" content="Offline field guide for the Last Rodeo Rally, Arizona 2026">
+<meta name="theme-color" content="#EDF0EA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121714" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Rodeo Rally">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<style>
+@font-face{font-family:"Big Shoulders Display";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/big-shoulders-display-latin-700-normal.woff2") format("woff2")}
+@font-face{font-family:"Big Shoulders Display";font-style:normal;font-weight:900;font-display:swap;src:url("fonts/big-shoulders-display-latin-900-normal.woff2") format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/ibm-plex-mono-latin-600-normal.woff2") format("woff2")}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0}
+[hidden]{display:none!important}
+</style>
+<script>window.offlineMsg=()=>("serviceWorker" in navigator&&navigator.serviceWorker.controller)?"✓ Saved on this device for offline use.":"";</script>
+</head>
+<body>
+<style>
+/* Layout: one-column field guide, sticky header with unit switch, bottom tab bar; stops read like a mile-marker log. */
+:root{
+  --bg:#EDF0EA; --surface:#FFFFFF; --sunk:#E1E6DE; --ink:#18201B; --muted:#56635A; --line:#C9D1C6;
+  --accent:#0B7A75; --accent-ink:#FFFFFF; --accent-soft:#D3ECE9;
+  --water:#1D6FB8; --water-soft:#DDEBF7; --warn:#A65F00; --warn-soft:#FBEBD2; --bad:#B42318; --bad-soft:#FBE1DE; --ok:#2E7D32;
+  --profile:#7A8F7F; --profile-fill:#C9D4C6;
+  --f-display:"Big Shoulders Display","Arial Narrow","Roboto Condensed",Impact,sans-serif;
+  --f-body:"Atkinson Hyperlegible",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-num:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121714; --surface:#1B221D; --sunk:#232C26; --ink:#E8EEE8; --muted:#9DAAA0; --line:#334038;
+  --accent:#4FC2BA; --accent-ink:#0B1A18; --accent-soft:#163633;
+  --water:#6FB1EE; --water-soft:#16283A; --warn:#F0B35A; --warn-soft:#33270F; --bad:#F2877C; --bad-soft:#3A1814; --ok:#7CC981;
+  --profile:#7FA08A; --profile-fill:#2A3A30; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121714; --surface:#1B221D; --sunk:#232C26; --ink:#E8EEE8; --muted:#9DAAA0; --line:#334038;
+  --accent:#4FC2BA; --accent-ink:#0B1A18; --accent-soft:#163633;
+  --water:#6FB1EE; --water-soft:#16283A; --warn:#F0B35A; --warn-soft:#33270F; --bad:#F2877C; --bad-soft:#3A1814; --ok:#7CC981;
+  --profile:#7FA08A; --profile-fill:#2A3A30; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{background:var(--bg)}
+body{color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.45;padding-inline:16px;padding-block:0 96px;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;letter-spacing:.01em}
+button{font:inherit;color:inherit}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin-inline:-16px;padding:10px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand b{font-family:var(--f-display);font-weight:900;font-size:24px;text-transform:uppercase;letter-spacing:.02em}
+.brand span{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:3px}
+.units{display:flex;background:var(--sunk);border-radius:999px;padding:3px}
+.units button{border:0;background:transparent;padding:7px 12px;border-radius:999px;font-weight:700;font-size:14px;cursor:pointer;min-height:36px}
+.units button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+/* tabs */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav.tabs button{border:0;background:none;padding:10px 4px 12px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;letter-spacing:.03em}
+nav.tabs svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+nav.tabs button[aria-selected="true"]{color:var(--accent)}
+section.view{display:flex;flex-direction:column;gap:16px;padding-top:16px}
+
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.sub{color:var(--muted);font-size:14px}
+.alt{color:var(--muted);font-size:.78em;font-weight:500;margin-left:.35em;white-space:nowrap}
+
+/* day chips */
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;font-weight:700;font-size:14px;cursor:pointer;min-height:40px}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+
+/* position */
+.pos-row{display:flex;align-items:center;gap:12px}
+.pos-row input[type=range]{flex:1;min-width:0;accent-color:var(--accent);height:36px}
+.stepper{display:flex;align-items:center;gap:6px}
+.stepper button{width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:var(--sunk);font-size:20px;font-weight:700;cursor:pointer}
+.pos-val{font-family:var(--f-num);font-size:28px;font-weight:600;min-width:5ch;text-align:center}
+.pos-val small{display:block;font-size:12px;color:var(--muted);font-weight:500}
+
+.next{display:grid;grid-template-columns:1fr;gap:10px}
+.nx{display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:12px;padding:12px;border-radius:12px;background:var(--sunk)}
+.nx .ic{width:44px;height:44px;border-radius:10px;display:grid;place-items:center}
+.nx .ic svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.nx.w .ic{background:var(--water-soft);color:var(--water)}
+.nx.f .ic{background:var(--accent-soft);color:var(--accent)}
+.nx.s .ic{background:var(--warn-soft);color:var(--warn)}
+.nx .t{min-width:0}
+.nx .t b{display:block;overflow-wrap:anywhere}
+.nx .t span{font-size:13px;color:var(--muted)}
+.nx .d{text-align:right;font-family:var(--f-num);font-weight:600;font-size:22px;line-height:1.05}
+.nx .d small{display:block;font-size:12px;color:var(--muted);font-weight:500}
+.nx.alarm{outline:2px solid var(--bad);background:var(--bad-soft)}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:var(--sunk);border-radius:10px;padding:10px;min-width:0}
+.stat .k{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.stat .v{font-family:var(--f-num);font-weight:600;font-size:19px;line-height:1.15}
+.stat .v small{display:block;font-size:12px;color:var(--muted);font-weight:500}
+
+/* profile */
+.profile{width:100%;height:auto;display:block}
+.profile .area{fill:var(--profile-fill)}
+.profile .line{fill:none;stroke:var(--profile);stroke-width:1.5}
+.profile .done{fill:var(--accent);opacity:.22}
+.profile .grid{stroke:var(--line);stroke-width:1}
+.profile text{fill:var(--muted);font-family:var(--f-num);font-size:10px}
+.profile .mk{stroke:var(--surface);stroke-width:1.5}
+.profile .mk.w{fill:var(--water)} .profile .mk.f{fill:var(--accent)} .profile .mk.s{fill:var(--warn)} .profile .mk.x{fill:var(--muted)}
+.profile .me{stroke:var(--bad);stroke-width:2}
+
+/* stops log */
+.log{display:flex;flex-direction:column}
+.stop{display:grid;grid-template-columns:62px 1fr;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.stop:first-child{border-top:0}
+.stop.past{opacity:.5}
+.mile{font-family:var(--f-num);font-weight:600;font-size:15px;line-height:1.1}
+.mile small{display:block;font-size:11px;color:var(--muted);font-weight:500;margin-top:2px}
+.stop h3{font-family:var(--f-body);font-size:16px;font-weight:700;letter-spacing:0}
+.stop p{margin:4px 0 0;font-size:14.5px}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.tag{font-size:12px;font-weight:700;padding:3px 8px;border-radius:6px;background:var(--sunk);color:var(--muted);white-space:nowrap}
+.tag.food{background:var(--accent-soft);color:var(--accent)}
+.tag.water{background:var(--water-soft);color:var(--water)}
+.tag.camp,.tag.bed{background:var(--warn-soft);color:var(--warn)}
+.tag.nowater,.tag.danger{background:var(--bad-soft);color:var(--bad)}
+.tag.off{background:transparent;border:1px solid var(--line)}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:13.5px;margin-top:8px}
+.meta dt{color:var(--muted);font-weight:700}
+.meta dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.lnk{color:var(--accent);font-weight:700;text-underline-offset:2px}
+.src{font-size:11px;color:var(--muted);margin-top:6px;letter-spacing:.03em}
+
+/* stage list */
+.stage{display:flex;flex-direction:column;gap:12px}
+.stage-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.stage-head h2{font-size:30px;font-weight:900;text-transform:uppercase;line-height:1}
+.stage-head .n{font-family:var(--f-display);font-weight:900;font-size:16px;color:var(--accent);letter-spacing:.08em;text-transform:uppercase}
+.route{font-size:15px;font-weight:700}
+.night{border-radius:10px;padding:12px;background:var(--warn-soft);font-size:14.5px}
+.night b{display:block;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--warn);margin-bottom:3px}
+details.more>summary{cursor:pointer;font-weight:700;color:var(--accent);list-style:none;min-height:40px;display:flex;align-items:center}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::before{content:"+";display:inline-block;width:1.2em;font-family:var(--f-num)}
+details.more[open]>summary::before{content:"–"}
+
+.alert{border-radius:12px;padding:14px;background:var(--bad-soft);color:var(--ink);border:1px solid var(--bad);display:flex;flex-direction:column;gap:6px}
+.alert b.h{color:var(--bad);font-size:13px;letter-spacing:.07em;text-transform:uppercase}
+.alert.w{background:var(--warn-soft);border-color:var(--warn)}
+.alert.w b.h{color:var(--warn)}
+.alert ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px}
+
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.gap-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 0;border-top:1px solid var(--line);align-items:center}
+.gap-row:first-of-type{border-top:0}
+.gap-row .d{font-family:var(--f-num);font-weight:600;text-align:right}
+.gap-row .d small{display:block;color:var(--muted);font-size:12px;font-weight:500}
+.hint{font-size:13px;color:var(--muted)}
+.big-h{font-size:34px;font-weight:900;text-transform:uppercase;line-height:.95}
+@media (prefers-reduced-motion:no-preference){.view{animation:in .18s ease-out}@keyframes in{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><b>Last Rodeo Rally</b><span>AZ Rally 2026 · Field Guide</span></div>
+    <div class="units" role="group" aria-label="Units">
+      <button id="u-metric" aria-pressed="true">km · m</button>
+      <button id="u-imp" aria-pressed="false">mi · ft</button>
+    </div>
+  </header>
+
+  <section class="view" id="v-now"></section>
+  <section class="view" id="v-days" hidden></section>
+  <section class="view" id="v-stops" hidden></section>
+  <section class="view" id="v-info" hidden></section>
+</div>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" data-v="now" aria-selected="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/></svg>On the road</button>
+  <button role="tab" data-v="days" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M3 19l5-9 4 6 3-4 6 7z"/></svg>Stages</button>
+  <button role="tab" data-v="stops" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Stops</button>
+  <button role="tab" data-v="info" aria-selected="false"><svg viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>Water &amp; info</button>
+</nav>
+
+<script>
+// [day, km, gain m, loss m, min m, max m, cumStart km, profile (101 samples, m)] — from the provisional Komoot GPX tracks
+const DAYS_RAW = [[1,90.9,906,673,708,1322,0,[709,710,712,717,721,722,727,730,732,735,739,744,749,754,761,771,771,770,763,770,779,783,783,790,794,799,800,809,820,832,835,840,843,851,888,954,1013,1089,1161,1198,1211,1202,1208,1225,1237,1287,1304,1309,1291,1296,1307,1312,1294,1266,1273,1272,1206,1192,1182,1196,1234,1207,1150,1154,1121,1101,1072,1034,1001,979,961,938,890,874,872,870,868,865,853,856,846,845,845,841,838,834,826,820,819,814,812,816,806,805,798,811,844,876,896,928,944]],[2,92.9,2085,1692,946,2488,90.9,[946,962,975,975,994,1001,1003,1006,1002,1024,1073,1109,1146,1155,1191,1212,1222,1269,1302,1324,1334,1350,1341,1322,1353,1400,1414,1415,1460,1490,1460,1434,1426,1387,1369,1398,1439,1425,1396,1335,1314,1322,1375,1427,1470,1462,1518,1556,1618,1648,1687,1759,1837,1897,1955,1993,2056,2109,2183,2235,2314,2371,2422,2438,2397,2376,2432,2455,2487,2487,2451,2423,2427,2453,2487,2452,2413,2364,2320,2255,2221,2182,2136,2095,2036,2019,1961,1917,1860,1816,1786,1759,1687,1673,1626,1605,1541,1483,1429,1375,1336]],[3,80.5,531,741,779,1333,183.8,[1333,1294,1252,1202,1162,1119,1082,1041,1004,958,929,878,852,837,832,822,821,805,799,790,781,782,784,783,789,786,791,819,840,854,867,874,875,874,873,845,855,866,879,884,890,895,901,906,910,914,918,923,922,925,930,936,937,938,941,945,953,957,961,962,972,975,985,996,1007,998,973,968,951,942,931,924,905,894,885,892,901,913,921,932,942,950,960,971,985,1000,1014,1030,1044,1061,1091,1117,1143,1145,1141,1131,1135,1131,1129,1127,1123]],[4,72.9,833,432,1129,1582,264.4,[1129,1140,1156,1180,1201,1221,1246,1283,1324,1311,1317,1324,1326,1331,1376,1420,1449,1470,1494,1528,1549,1576,1575,1559,1553,1541,1528,1520,1509,1498,1489,1491,1484,1497,1500,1495,1472,1465,1466,1447,1436,1450,1463,1481,1480,1472,1484,1481,1487,1486,1472,1458,1449,1439,1434,1422,1420,1387,1373,1363,1353,1348,1336,1327,1319,1312,1303,1297,1289,1281,1276,1272,1261,1254,1248,1241,1243,1248,1254,1260,1270,1277,1288,1299,1320,1329,1334,1354,1366,1370,1380,1389,1402,1411,1425,1435,1452,1462,1481,1505,1531]],[5,40.8,494,384,1481,1729,337.3,[1550,1547,1540,1538,1535,1529,1517,1513,1513,1509,1501,1499,1496,1496,1496,1484,1481,1490,1492,1498,1517,1523,1531,1538,1543,1548,1557,1565,1572,1582,1592,1608,1627,1645,1657,1636,1624,1619,1612,1608,1591,1603,1601,1596,1591,1570,1550,1543,1539,1535,1539,1547,1535,1526,1549,1566,1585,1595,1602,1601,1605,1612,1623,1623,1626,1623,1626,1626,1626,1631,1644,1651,1658,1683,1705,1705,1711,1719,1729,1722,1708,1720,1726,1713,1699,1692,1688,1680,1690,1707,1726,1709,1689,1672,1680,1695,1685,1660,1663,1656,1663]],[6,89.1,906,1373,1074,1812,378.1,[1664,1664,1690,1739,1722,1698,1744,1740,1726,1710,1690,1670,1653,1640,1620,1602,1588,1566,1525,1550,1557,1549,1532,1507,1499,1489,1463,1455,1466,1452,1447,1418,1415,1415,1415,1433,1433,1429,1446,1461,1478,1508,1530,1539,1563,1586,1626,1683,1757,1805,1794,1708,1646,1567,1499,1465,1432,1387,1365,1337,1299,1260,1237,1209,1182,1166,1145,1115,1113,1120,1112,1108,1103,1095,1089,1086,1084,1085,1076,1077,1077,1109,1090,1086,1099,1102,1102,1109,1122,1132,1150,1167,1181,1197,1218,1234,1183,1215,1214,1220,1196]],[7,92.9,872,917,916,1455,467.2,[1187,1187,1233,1262,1267,1276,1338,1393,1422,1439,1418,1353,1334,1305,1278,1244,1237,1297,1316,1318,1360,1353,1365,1332,1301,1265,1251,1278,1294,1252,1230,1220,1205,1192,1190,1201,1199,1193,1175,1169,1161,1153,1141,1129,1109,1109,1121,1146,1149,1172,1194,1204,1184,1169,1157,1163,1164,1153,1146,1118,1113,1112,1087,1073,1066,1058,1054,1049,1042,1039,1032,1026,1024,1018,1014,1005,996,986,980,976,970,969,965,957,947,935,933,932,921,916,924,946,969,986,1010,1041,1071,1094,1125,1135,1142]],[8,81.2,269,698,711,1158,560.1,[1142,1156,1156,1117,1084,1066,1037,1008,989,977,966,945,920,916,920,917,911,913,910,902,903,930,918,920,919,918,915,917,926,925,919,913,899,889,889,886,886,887,888,889,890,888,889,888,886,888,885,882,894,894,936,948,976,995,1012,1029,1029,1055,1067,1079,1073,1060,1044,1031,1020,997,976,957,946,910,890,872,868,847,831,828,810,805,805,787,777,769,763,760,757,755,751,748,747,740,740,735,732,727,726,726,720,716,713,711,716]]];
+const DAYS = DAYS_RAW.map(([n,km,gain,loss,min,max,cum,prof])=>({n,km,gain,loss,min,max,cum,prof}));
+
+const META = {
+  1:{from:"Tucson",to:"San Pedro Valley (before San Manuel)",night:"No resupply at the end of the stage. After Circle K (km 6 / mi 4) there is nothing for 75 km (47 mi). Carry dinner, breakfast and overnight water from Tucson. San Manuel (store, 7 Sky Motel) is 6.5 km (4 mi) into day 2."},
+  2:{from:"San Manuel",to:"Molino Basin",night:"Molino Basin Campground is a dry camp with NO water. Fill up completely on Mt Lemmon / Summerhaven or at Rose Canyon. Alternatives: Rose Canyon (water, km 75 / mi 47) or General Hitchcock (km 83 / mi 51, seasonal creek only)."},
+  3:{from:"Molino Basin",to:"Santa Rita foothills",night:"From Vail (≈ km 50 / mi 31) there are 80 km (50 mi) without food or water until Sonoita, including tonight. Option with water: Bog Springs Campground in Madera Canyon (6.4 km / 4 mi off route, potable water). Free but dry: Proctor (5.6 km / 3.5 mi off route)."},
+  4:{from:"Santa Rita foothills",to:"Canelo Hills (south of Patagonia)",night:"No camp listed in the guide. Last food in Patagonia (km 55 / mi 34), then 126 km (78 mi) without a store. Buy food for tonight, day 5 and day 6, and carry water for the night. Option with water & shower: TerraSol Camping Center in Patagonia (stage ends at ≈ km 55 / mi 34 instead of 73). Fallback with a bed: Stage Stop Inn, Patagonia."},
+  5:{from:"Canelo Hills",to:"Parker Canyon Lake",night:"Lakeview Campground: $20/site, drinking water & restrooms (per Laura). Bring cash, no cell signal. Little food: the camp store's hours are unreliable."},
+  6:{from:"Parker Canyon Lake",to:"Peña Blanca",night:"Peña Blanca / White Rock Campground: $15, NO water. Fill up for evening and morning at Pilot Rio Rico (≈ km 73 / mi 45). The lake is mercury-contaminated: do not drink it, even filtered."},
+  7:{from:"Peña Blanca",to:"Final Camp (Whipple Observatory)",night:"Final Camp: water at Fred Whipple Observatory. Turn-off to camp ≈ km 83 (mi 52). Last shopping: Amado Market (≈ km 79 / mi 49)."},
+  8:{from:"Final Camp",to:"Tucson · The Mercado",night:"Finish: The Mercado, Tucson. Full resupply in Green Valley (Safeway, km 28 / mi 18)."}
+};
+
+/* Stops. d = day, k = km into that day on the GPX track, r = official rally km from Laura's resupply guide (null if not in it),
+   off = km off route, c = categories, wq = water quality (ok | warn | no). */
+const STOPS = [
+  {d:1,k:0,r:0,n:"Start · Tucson",c:["food","water"],wq:"ok",i:"Safeway grocery store, coffee & pastries at Le Buzz, restaurants. Closest bike shop: Sabino Cycles, 5 km (3 mi) away.",src:"L"},
+  {d:1,k:0,r:null,off:9.1,n:"Oro Valley Bicycle",c:["bike"],i:"Northwest Tucson, full-service + workshops.",hours:"Mon–Sun",src:"S"},
+  {d:1,k:0.1,r:null,off:1.0,n:"Circle K (24 h) · 1st Ave",c:["food","water"],wq:"ok",i:"Open 24/7, close to the start.",cash:"Card OK",src:"S"},
+  {d:1,k:1.5,r:null,off:3.4,n:"Z Market (24 h)",c:["food","water"],wq:"ok",i:"Neighborhood market, good reviews.",cash:"Card OK",src:"S"},
+  {d:1,k:5,r:null,off:3.9,n:"Pima Street Bicycle",c:["bike"],i:"Full-service incl. e-bikes, central, excellent reviews.",hours:"Tue–Sat",src:"S"},
+  {d:1,k:6,r:5,n:"Circle K",c:["food","water"],wq:"ok",i:"Convenience store. Last food & water for 75 km (47 mi) until San Manuel.",alert:true,src:"L"},
+  {d:1,k:13,r:null,off:3.2,n:"La Quinta Inn Tucson East",c:["bed"],i:"Chain hotel, reliable standard.",src:"S"},
+  {d:1,k:15.3,r:null,off:2.3,n:"Quik Mart · Speedway Blvd",c:["food","water"],wq:"ok",i:"Convenience store, bottled water.",cash:"Card OK",src:"S"},
+  {d:1,k:15.3,r:null,off:3.6,n:"Broadway Bicycles",c:["bike"],i:"Full-service, rentals, very highly rated.",hours:"Tue–Sat",src:"S"},
+
+  {d:2,k:6.5,r:79,off:0.1,n:"San Manuel",c:["food","water"],wq:"ok",i:"Salt N Pepper Food Mart: 24 h gas station. Simply Something Groceries: open daily 9am–7pm (9:00–19:00). Limited food, restaurants off route.",cash:"Card OK, cash as backup",cell:"Good",src:"LS"},
+  {d:2,k:6.5,r:null,off:0.3,n:"7 Sky Motel · San Manuel",c:["bed"],i:"Small local motel, clean, good value.",price:"budget",src:"S"},
+  {d:2,k:17.9,r:90,off:6,n:"Oracle (detour)",c:["food","water","bed"],wq:"ok",i:"6 km (4 mi) off route. Limited grocery, hotel & restaurants.",src:"L"},
+  {d:2,k:23,r:95,n:"Peppersauce Kitchen",c:["food"],i:"Burgers, vegan burger, cream soda.",hours:"10am–5pm (10:00–17:00)",src:"L"},
+  {d:2,k:25.3,r:98,off:0,n:"Peppersauce Campground",c:["camp","water"],wq:"warn",i:"Water only (pump, untreated: filter/treat). USFS, creek, no showers.",price:"$15 cash per site",cash:"Cash!",cell:"No signal (canyon)",src:"LS"},
+  {d:2,k:56.6,r:null,off:16.7,n:"Catalina Inn",c:["bed"],i:"On the Oracle Rd corridor towards Tucson, far off route.",src:"S"},
+  {d:2,k:58,r:129,n:"Top of Mt Lemmon",c:["food","water"],wq:"ok",i:"Mt Lemmon Cookie Cabin, Mt Lemmon General Store, Sawmill Run: pizza, ice cream, cookies, snacks, burgers & sandwiches.",cell:"Patchy",src:"L"},
+  {d:2,k:58.5,r:130,off:1,n:"Summerhaven",c:["food","water","bed"],wq:"ok",i:"1 km off route. General store, hotel & restaurants. Fill up here for tonight's dry camp.",src:"L"},
+  {d:2,k:75.2,r:null,off:0.7,n:"Rose Canyon Campground",c:["camp","water"],wq:"ok",i:"At 2,100 m (7,000 ft), forested, cool nights, lake nearby. Water in season.",price:"$31–51 (Recreation.gov)",cash:"Card OK",cell:"Weak/none",src:"S"},
+  {d:2,k:82.8,r:null,off:0.2,n:"General Hitchcock Campground",c:["camp"],wq:"warn",i:"Tent-only, shaded. Seasonal creek only, not reliable: carry water in.",price:"≈ $20",cash:"Cash",cell:"Weak/none",src:"S"},
+  {d:2,k:92,r:null,off:0.2,n:"Molino Basin Campground",night:true,c:["camp"],wq:"no",i:"Dry camp, vault toilets, right on route. NO water: fill up before the descent.",price:"$20 (Coronado NF)",cash:"Self-pay, cash/card",cell:"Weak",src:"S"},
+
+  {d:3,k:15,r:177,n:"Tucson · Safeway",c:["food","water"],wq:"ok",i:"Grocery, restaurants & hotels for the next 35 km (22 mi).",hours:"daily 6am–10pm (6:00–22:00)",approx:true,src:"L"},
+  {d:3,k:34,r:196,n:"Tucson · Walmart",c:["food","water"],wq:"ok",i:"Big shop possible.",hours:"6am–11pm (6:00–23:00)",approx:true,src:"L"},
+  {d:3,k:50,r:211,n:"Vail · Roadrunner Market Grill",c:["food","water"],wq:"ok",i:"Last stop for food & water for the next 80 km (50 mi), including night 3.",hours:"daily 5am–11pm (5:00–23:00)",alert:true,approx:true,src:"L"},
+  {d:3,k:51,r:212,n:"Roadrunner Market",c:["food","water"],wq:"ok",i:"Last resupply until Sonoita.",approx:true,src:"L"},
+  {d:3,k:80.5,r:null,off:6.4,n:"Bog Springs Campground · Madera Canyon",c:["camp","water"],wq:"ok",i:"Potable water spigots on site. Shaded, lots of wildlife, popular: arrive early.",price:"$20",cash:"Self-pay / Recreation.gov",cell:"Decent (Verizon/AT&T)",src:"S"},
+  {d:3,k:80.5,r:null,off:5.6,n:"Proctor (dispersed)",c:["camp"],wq:"no",i:"Free first-come sites at the Madera Canyon trailhead. NO water.",price:"free",cell:"Good (Verizon)",src:"S"},
+
+  {d:4,k:35.2,r:275,off:0.1,n:"Sonoita",c:["food","water","bed"],wq:"ok",i:"General store, hotel & restaurant. Nearby: Sonoita Mini Market, Sonoita Mercantile, Gathering Grounds.",src:"L"},
+  {d:4,k:55,r:296,off:0.2,n:"Patagonia",c:["food","water","bed"],wq:"ok",i:"Patagonia Market (organic store), hotel, bars. Last stop for food for 126 km (78 mi), until Rio Rico on day 6.",alert:true,src:"L"},
+  {d:4,k:55.1,r:null,off:0.3,n:"Red Mountain Foods · Patagonia",c:["food","water"],wq:"ok",i:"Well-stocked small grocery, fresh produce, local favorite.",cash:"Card OK",src:"S"},
+  {d:4,k:55.1,r:null,off:0.1,n:"Patagonia Bikes",c:["bike","food"],i:"Gravel specialist right on route, repairs, rentals, coffee shop attached.",hours:"Fri–Sun only",src:"S"},
+  {d:4,k:55.1,r:null,off:0.2,n:"Stage Stop Inn · Patagonia",c:["bed"],i:"Charming small-town inn, walk to cafés & restaurants.",src:"S"},
+  {d:4,k:55.5,r:null,n:"TerraSol Camping Center · Patagonia",c:["camp","water"],wq:"ok",i:"542 Harshaw Rd, on the southern edge of Patagonia. Welcomes hikers & bikepackers (AZT / Sky Islands Odyssey). Tent platforms, picnic tables, toilet, warm camp shower, sink, water, shared outlet for charging, wifi. Laundry at the RV park next door. Phone: 520-987-0770.",link:{href:"https://docs.google.com/forms/d/e/1FAIpQLSdJ2oG2rquRVMyphGdjkla57vfsE0gKOBnZ7h0qvunZnO0zQg/viewform",text:"register"},price:"$30 Dinner & Camping Special Combo (register via link)",approx:true,src:"W"},
+  {d:4,k:73,r:null,off:18.1,n:"Magnuson Hotel Sierra Vista",c:["bed"],i:"Far off route (≈ 40 km / 25 mi east), budget fallback.",src:"S"},
+  {d:4,k:73,r:null,off:20,n:"Bike shops · Sierra Vista",c:["bike"],i:"Coronado Cyclery (Mon–Sun), Sun & Spokes (Tue–Sat), M & M Cycling (Tue–Sat). Emergency only, about 20 km (12 mi) off route.",src:"S"},
+
+  {d:5,k:40.8,r:354,off:1,n:"Parker Canyon Lake · Lakeview Campground",night:true,c:["camp","water","food"],wq:"ok",i:"1 km off route. Limited food (camp store, unreliable hours). Drinking water & restrooms. Last water source for 71 km (44 mi).",price:"$20/site",cash:"Cash recommended",cell:"No signal",alert:true,src:"LS"},
+
+  {d:6,k:65,r:null,off:5.3,n:"Motel 6 Nogales · Mariposa Rd",c:["bed"],i:"Reliable chain motel on the US side.",price:"≈ $60–90",src:"S"},
+  {d:6,k:73,r:425,n:"Pilot Travel Center · Rio Rico",c:["food","water"],wq:"ok",i:"Convenience store & fast food. Stock up on water for evening and morning: tonight's camp is dry.",hours:"24 h",approx:true,src:"L"},
+  {d:6,k:73.8,r:null,off:4.5,n:"Mountain Market · Rio Rico",c:["food","water"],wq:"ok",i:"Small grocery/deli, tortillas & salsa.",hours:"7am–5pm (7:00–17:00), call ahead",src:"S"},
+  {d:6,k:89.1,r:441,off:0,n:"Peña Blanca · White Rock Campground",night:true,c:["camp"],wq:"no",i:"NO water. Peña Blanca Lake (0.8 km away) is mercury-contaminated: do not drink, even filtered. Lots of Border Patrol traffic.",price:"$15",cash:"Cash",cell:"Decent",danger:true,src:"LS"},
+
+  {d:7,k:41.6,r:482,off:0.4,n:"Arivaca",c:["food","water"],wq:"ok",i:"Arivaca Mercantile, La Gitana Cantina & Cafe, Virginia's Mexican Food. Grocery & restaurants.",src:"L"},
+  {d:7,k:44.4,r:null,off:1.5,n:"La Siesta Campgrounds · Arivaca",c:["camp","water"],wq:"ok",i:"Host on site, community water.",cash:"Card OK",src:"S"},
+  {d:7,k:78.6,r:520,off:0,n:"Arivaca Junction · Amado Market",c:["food","water"],wq:"ok",i:"Grocery (fresh produce) & saloon. Last shopping before the final camp.",cash:"Card OK",src:"LS"},
+  {d:7,k:83,r:524,n:"Turn-off to Final Camp",c:["info"],i:"Detour for the final camping night begins.",approx:true,src:"L"},
+  {d:7,k:92.9,r:533,n:"Final Camp",night:true,c:["camp","water"],wq:"ok",i:"Water available at Fred Whipple Observatory.",src:"L"},
+
+  {d:8,k:17.1,r:null,off:0.3,n:"Canoa Ranch Golf Resort",c:["bed","food"],i:"Nicer resort option with restaurant.",src:"S"},
+  {d:8,k:28,r:null,off:0.6,n:"Bike Doc (mobile)",c:["bike"],i:"Mobile bike doctor (Beau), picks up and drops off.",hours:"Tue–Sun",src:"S"},
+  {d:8,k:28,r:null,off:0.1,n:"Best Western Green Valley Inn",c:["bed"],i:"On-site restaurant.",src:"S"},
+  {d:8,k:28.3,r:570,off:0.1,n:"Green Valley · Safeway",c:["food","water"],wq:"ok",i:"Full resupply, fast food nearby. Circle K on La Cañada Dr.",src:"L"},
+  {d:8,k:31.5,r:null,off:0.1,n:"Green Valley Bike Hub",c:["bike"],i:"Full-service, sales & repair (Rob).",hours:"Mon–Sat",src:"S"},
+  {d:8,k:31.5,r:null,off:0.5,n:"Desert Spokes Bike Shop",c:["bike"],i:"Mobile/on-site repair also offered (Eric): call ahead.",hours:"Mon–Sat, split hours",src:"S"},
+  {d:8,k:31.9,r:null,off:0.7,n:"Vagabond Inn Green Valley",c:["bed"],i:"Budget option, mixed reviews.",src:"S"},
+  {d:8,k:78.5,r:null,off:14.6,n:"Gilbert Ray Campground",c:["camp","water"],wq:"ok",i:"Tucson Mountain Park, saguaro desert. For the night before/after the rally.",price:"$20–30",src:"S"},
+  {d:8,k:79.6,r:null,off:1.9,n:"Tucson Bicycle Service",c:["bike"],i:"Owner-run (Mario), honest & fast, popular with tourers.",hours:"Tue–Sat",src:"S"},
+  {d:8,k:80.8,r:null,off:1.3,n:"Veloce Bicycle Studio",c:["bike"],i:"Small independent studio, road bike specialist.",hours:"Mon–Fri",src:"S"},
+  {d:8,k:81.2,r:623,n:"Finish · The Mercado",night:true,c:["info","food"],i:"Finish in Tucson.",src:"L"}
+].map(s=>({...s,cum:DAYS[s.d-1].cum+s.k}));
+
+/* ---------- units ---------- */
+const KM_MI=0.621371, M_FT=3.28084;
+let imperial=false, view="now", day=1, posKm=0, filter="all";
+try{const s=JSON.parse(localStorage.getItem("rodeo")||"{}");imperial=!!s.imperial;view=s.view||"now";day=s.day||1;posKm=s.posKm||0;filter=s.filter||"all"}catch(e){}
+function save(){try{localStorage.setItem("rodeo",JSON.stringify({imperial,view,day,posKm,filter}))}catch(e){}}
+
+const fmt=(v,dec)=>v.toLocaleString("en-US",{minimumFractionDigits:dec,maximumFractionDigits:dec});
+function dist(km,dec){ dec = dec ?? (km<10?1:0);
+  const a=fmt(km,dec)+" km", b=fmt(km*KM_MI,dec)+" mi";
+  return imperial? b+'<span class="alt">'+a+'</span>' : a+'<span class="alt">'+b+'</span>'; }
+function distStack(km){ const dec=km<10?1:0; const a=fmt(km,dec)+" km", b=fmt(km*KM_MI,dec)+" mi";
+  return imperial? b+"<small>"+a+"</small>" : a+"<small>"+b+"</small>"; }
+function elev(m){ const a=fmt(Math.round(m),0)+" m", b=fmt(Math.round(m*M_FT/10)*10,0)+" ft";
+  return imperial? b+'<span class="alt">'+a+'</span>' : a+'<span class="alt">'+b+'</span>'; }
+function elevStack(m){ const a=fmt(Math.round(m),0)+" m", b=fmt(Math.round(m*M_FT/10)*10,0)+" ft";
+  return imperial? b+"<small>"+a+"</small>" : a+"<small>"+b+"</small>"; }
+function short(km){ return imperial? fmt(km*KM_MI,km<10?1:0) : fmt(km,km<10?1:0); }
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const CAT={food:"Food",water:"Water",camp:"Camping",bed:"Lodging",bike:"Bike shop",info:"Info"};
+const ICON={
+  w:'<svg viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg>',
+  f:'<svg viewBox="0 0 24 24"><path d="M6 3v8a2 2 0 0 0 2 2v8M10 3v8M8 3v8M17 21V3c-2 1-3 4-3 8h3"/></svg>',
+  s:'<svg viewBox="0 0 24 24"><path d="M3 20h18M5 20l7-15 7 15M12 5v15"/></svg>'
+};
+function markClass(s){ if(s.c.includes("water")&&s.wq!=="no") return "w"; if(s.c.includes("food")) return "f"; if(s.c.includes("camp")||s.c.includes("bed")) return "s"; return "x"; }
+
+function tagsHtml(s){
+  let t=s.c.map(c=>`<span class="tag ${c}">${CAT[c]}</span>`).join("");
+  if(s.wq==="no") t+=`<span class="tag nowater">No water</span>`;
+  if(s.wq==="warn") t+=`<span class="tag danger">Treat water</span>`;
+  if(s.off>=0.5) t+=`<span class="tag off">${imperial?fmt(s.off*KM_MI,1)+" mi":fmt(s.off,1)+" km"} off route (straight line)</span>`;
+  return t;
+}
+function stopHtml(s,past){
+  const meta=[["Hours",s.hours],["Price",s.price],["Payment",s.cash],["Cell",s.cell]].filter(x=>x[1]);
+  const rk = s.r!=null ? `<small>Guide ${imperial?fmt(s.r*KM_MI,0)+" mi":s.r+" km"}</small>` : "";
+  return `<div class="stop${past?" past":""}">
+    <div class="mile">${s.approx?"≈":""}${short(s.k)}<small>${imperial?"mi":"km"} · D${s.d}</small>${rk}</div>
+    <div><h3>${esc(s.n)}</h3><p>${esc(s.i)}</p>${s.link?`<p><a class="lnk" href="${esc(s.link.href)}" target="_blank" rel="noopener">${esc(s.link.text)}</a></p>`:""}<div class="tags">${tagsHtml(s)}</div>
+    ${meta.length?`<dl class="meta">${meta.map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl>`:""}</div></div>`;
+}
+
+/* ---------- profile ---------- */
+function profileSvg(D,opts={}){
+  const W=340,H=opts.h||110,pl=30,pr=6,pt=8,pb=18;
+  const lo=Math.floor(D.min/200)*200, hi=Math.ceil(D.max/200)*200;
+  const x=k=>pl+(k/D.km)*(W-pl-pr), y=e=>pt+(1-(e-lo)/(hi-lo))*(H-pt-pb);
+  const pts=D.prof.map((e,i)=>[x(D.km*i/100),y(e)]);
+  const line=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join("");
+  const area=line+`L${x(D.km).toFixed(1)} ${H-pb}L${pl} ${H-pb}Z`;
+  let g="";
+  const step=(hi-lo)>1000?500:200;
+  for(let e=lo;e<=hi;e+=step){ const yy=y(e).toFixed(1); const lab=imperial?Math.round(e*M_FT/100)/10+"k":e;
+    g+=`<line class="grid" x1="${pl}" x2="${W-pr}" y1="${yy}" y2="${yy}"/><text x="${pl-4}" y="${+yy+3}" text-anchor="end">${lab}</text>`; }
+  const tot=imperial?D.km*KM_MI:D.km, tick=tot>60?20:10;
+  for(let v=0;v<=tot+0.01;v+=tick){ const k=imperial?v/KM_MI:v; g+=`<text x="${x(k).toFixed(1)}" y="${H-4}" text-anchor="middle">${v}</text>`; }
+  let done="";
+  if(opts.pos!=null){ const px=x(Math.min(opts.pos,D.km)); done=`<rect class="done" x="${pl}" y="${pt}" width="${(px-pl).toFixed(1)}" height="${H-pt-pb}"/><line class="me" x1="${px.toFixed(1)}" x2="${px.toFixed(1)}" y1="${pt}" y2="${H-pb}"/>`; }
+  const mk=STOPS.filter(s=>s.d===D.n&&(s.src!=="S"||((s.off||0)<1&&!s.c.includes("bike")&&!s.c.includes("bed"))))
+    .map(s=>{const i=Math.round(s.k/D.km*100);return `<circle class="mk ${markClass(s)}" cx="${x(s.k).toFixed(1)}" cy="${y(D.prof[Math.min(100,i)]).toFixed(1)}" r="4"><title>${esc(s.n)}</title></circle>`}).join("");
+  return `<svg class="profile" viewBox="0 0 ${W} ${H}" role="img" aria-label="Elevation profile day ${D.n}">${g}<path class="area" d="${area}"/>${done}<path class="line" d="${line}"/>${mk}</svg>`;
+}
+function remainingGain(D,k){
+  let pg=0,rg=0; const i0=Math.round(k/D.km*100);
+  for(let i=1;i<=100;i++){const dd=D.prof[i]-D.prof[i-1]; if(dd>0){pg+=dd; if(i>i0) rg+=dd;}}
+  return pg? rg*D.gain/pg : 0;
+}
+const legend=`<div class="tags"><span class="tag water">● Water</span><span class="tag food">● Food</span><span class="tag camp">● Sleep</span></div>`;
+
+/* ---------- views ---------- */
+function renderNow(){
+  const D=DAYS[day-1]; posKm=Math.min(posKm,D.km);
+  const here=D.cum+posKm;
+  const ahead=STOPS.filter(s=>s.cum>here+0.05);
+  const nextOf=(pred)=>ahead.find(pred);
+  const water=nextOf(s=>s.c.includes("water")&&s.wq==="ok"&&(s.off||0)<=6.5);
+  const food=nextOf(s=>s.c.includes("food")&&(s.off||0)<=6.5);
+  const sleep=STOPS.find(s=>s.d===day&&s.night&&s.cum>here-0.05);
+  const nx=(cls,label,s)=>{ if(!s) return `<div class="nx ${cls}"><div class="ic">${ICON[cls]}</div><div class="t"><b>${label}</b><span>Nothing left before the finish</span></div><div class="d">–</div></div>`;
+    const d=s.cum-here; const alarm=cls!=="s"&&d>40;
+    return `<div class="nx ${cls}${alarm?" alarm":""}"><div class="ic">${ICON[cls]}</div><div class="t"><b>${esc(s.n)}</b><span>${label} · Day ${s.d}${s.off>=0.5?" · "+(imperial?fmt(s.off*KM_MI,1)+" mi":fmt(s.off,1)+" km")+" off route (straight line)":""}</span></div><div class="d">${s.approx?"≈":""}${distStack(d)}</div></div>`; };
+  const upcoming=STOPS.filter(s=>s.cum>=here-0.05&&s.cum<=here+60&&!(s.c.length===1&&s.c[0]==="bike")).slice(0,8);
+  const maxStep = imperial? D.km*KM_MI : D.km;
+  const shown = imperial? posKm*KM_MI : posKm;
+  document.getElementById("v-now").innerHTML=`
+    <div class="eyebrow">Where are you?</div>
+    <div class="chips" role="group" aria-label="Day">${DAYS.map(x=>`<button class="chip" data-day="${x.n}" aria-pressed="${x.n===day}">Day ${x.n}</button>`).join("")}</div>
+    <div class="card">
+      <div class="pos-row">
+        <div class="stepper"><button id="pm" aria-label="Back 5">−</button></div>
+        <div class="pos-val" id="pv">${fmt(shown,1)}<small>${imperial?"mi":"km"} of ${fmt(maxStep,1)}</small></div>
+        <div class="stepper"><button id="pp" aria-label="Forward 5">+</button></div>
+      </div>
+      <input type="range" id="pos" min="0" max="${maxStep.toFixed(1)}" step="0.5" value="${shown.toFixed(1)}" aria-label="Position on the stage">
+      <div class="hint">Set the distance from your bike computer/Komoot for day ${day}. ± jumps 5 ${imperial?"mi":"km"}.</div>
+      ${profileSvg(D,{pos:posKm,h:120})}
+      <div class="stats">
+        <div class="stat"><div class="k">Left today</div><div class="v">${distStack(D.km-posKm)}</div></div>
+        <div class="stat"><div class="k">Climb left</div><div class="v">${elevStack(remainingGain(D,posKm))}</div></div>
+        <div class="stat"><div class="k">Elevation now</div><div class="v">${elevStack(D.prof[Math.round(posKm/D.km*100)])}</div></div>
+      </div>
+    </div>
+    <div class="next">
+      ${nx("w","Next drinking water",water)}
+      ${nx("f","Next food",food)}
+      ${sleep?nx("s",day===8?"Finish":"Sleep tonight",sleep):`<div class="night"><b>Night ${day}</b>${esc(META[day].night)}</div>`}
+    </div>
+    ${sleep?`<div class="night"><b>Night ${day}</b>${esc(META[day].night)}</div>`:""}
+    <div class="card"><div class="eyebrow">Next ${imperial?"37 mi":"60 km"}</div>
+      <div class="log">${upcoming.length?upcoming.map(s=>stopHtml(s)).join(""):'<p class="sub">No stops on this stretch.</p>'}</div></div>`;
+  const v=document.getElementById("v-now");
+  v.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{day=+b.dataset.day;posKm=0;save();renderNow()});
+  const r=v.querySelector("#pos");
+  r.oninput=()=>{v.querySelector("#pv").firstChild.nodeValue=fmt(+r.value,1)};
+  r.onchange=()=>{posKm=imperial?r.value/KM_MI:+r.value; save(); renderNow(); document.getElementById("pos").focus()};
+  const stepBy=n=>{posKm=Math.max(0,Math.min(D.km,posKm+n*(imperial?1/KM_MI:1)));save();renderNow()};
+  v.querySelector("#pm").onclick=()=>stepBy(-5); v.querySelector("#pp").onclick=()=>stepBy(5);
+}
+
+function renderDays(){
+  const tot=DAYS.reduce((a,d)=>a+d.km,0), gain=DAYS.reduce((a,d)=>a+d.gain,0);
+  document.getElementById("v-days").innerHTML=`
+    <div class="card"><h1 class="big-h">8 Stages</h1>
+      <div class="stats">
+        <div class="stat"><div class="k">Distance</div><div class="v">${distStack(tot)}</div></div>
+        <div class="stat"><div class="k">Climbing</div><div class="v">${elevStack(gain)}</div></div>
+        <div class="stat"><div class="k">Highest point</div><div class="v">${elevStack(Math.max(...DAYS.map(d=>d.max)))}</div></div>
+      </div>
+      <div class="hint">From the provisional GPX tracks. Laura's guide uses 623 km (387 mi), so guide distances and your bike computer may differ.</div>
+      ${legend}
+    </div>
+    ${DAYS.map(D=>{const M=META[D.n]; const ss=STOPS.filter(s=>s.d===D.n);
+      return `<article class="card stage" id="tag${D.n}">
+      <div class="stage-head"><h2>Day ${D.n}</h2><span class="n">${dist(D.km)}</span></div>
+      <div class="route">${esc(M.from)} → ${esc(M.to)}</div>
+      <div class="stats">
+        <div class="stat"><div class="k">Climb</div><div class="v">${elevStack(D.gain)}</div></div>
+        <div class="stat"><div class="k">Descent</div><div class="v">${elevStack(D.loss)}</div></div>
+        <div class="stat"><div class="k">Max elevation</div><div class="v">${elevStack(D.max)}</div></div>
+      </div>
+      ${profileSvg(D)}
+      <div class="night"><b>Night ${D.n}</b>${esc(M.night)}</div>
+      <details class="more"><summary>${ss.length} stops on this day</summary><div class="log">${ss.map(s=>stopHtml(s)).join("")}</div></details>
+      <button class="chip" data-go="${D.n}" style="align-self:flex-start">Open day ${D.n} in On the road</button>
+    </article>`}).join("")}`;
+  document.querySelectorAll("#v-days [data-go]").forEach(b=>b.onclick=()=>{day=+b.dataset.go;posKm=0;setView("now")});
+}
+
+function renderStops(){
+  const F=[["all","All"],["water","Water"],["food","Food"],["camp","Camping"],["bed","Lodging"],["bike","Bike shops"]];
+  const list=STOPS.filter(s=>filter==="all"||s.c.includes(filter)&&!(filter==="water"&&s.wq==="no"));
+  let html=`<div class="filters" role="group" aria-label="Filter">${F.map(([k,l])=>`<button class="chip" data-f="${k}" aria-pressed="${filter===k}">${l}</button>`).join("")}</div>`;
+  for(const D of DAYS){ const ss=list.filter(s=>s.d===D.n); if(!ss.length) continue;
+    html+=`<div class="card"><div class="stage-head"><h2 style="font-size:24px">Day ${D.n}</h2><span class="sub">${esc(META[D.n].from)} → ${esc(META[D.n].to)}</span></div><div class="log">${ss.map(s=>stopHtml(s)).join("")}</div></div>`; }
+  html+=`<p class="hint">Left column: distance within the day (GPX). “Guide” = official rally distance from Laura's resupply guide. ≈ = estimated position. “Off route” distances are straight-line from the nearest point on the track; the ride there is longer.</p>`;
+  document.getElementById("v-stops").innerHTML=html;
+  document.querySelectorAll("#v-stops [data-f]").forEach(b=>b.onclick=()=>{filter=b.dataset.f;save();renderStops()});
+}
+
+function renderInfo(){
+  const gaps=[
+    ["Circle K (D1) → San Manuel (D2)","Food & water, incl. night 1",75],
+    ["Vail (D3) → Sonoita (D4)","Food & water, incl. night 3",80],
+    ["Patagonia (D4) → Pilot Rio Rico (D6)","Food, incl. nights 4 & 5",126],
+    ["Parker Canyon Lake (D5) → Pilot Rio Rico (D6)","Water",71],
+    ["Pilot Rio Rico (D6) → Arivaca (D7)","Water, incl. dry night 6",57]
+  ];
+  document.getElementById("v-info").innerHTML=`
+    <div class="alert"><b class="h">Water safety: read before the ride</b><ul>
+      <li>Carry at least <b>3 L (≈ 100 fl oz)</b> on the bike at all times, plus extra bottles for electrolytes.</li>
+      <li>Filtering natural water is mostly <b>not an option</b>: creeks around Patagonia (Harshaw Creek, Sonoita Creek tributaries, Alum Gulch, Flux Canyon) carry acid mine drainage with heavy metals. Standard filters don't remove dissolved metals.</li>
+      <li><b>Peña Blanca Lake</b> (next to the night 6 camp) is mercury-contaminated. Don't drink it, even filtered or treated.</li>
+      <li>Dry nights: <b>1</b>, <b>2</b> (Molino Basin), <b>3</b>, <b>4</b> and <b>6</b> (Peña Blanca). Carry water for evening and morning.</li>
+    </ul></div>
+    <div class="card"><div class="eyebrow">Long gaps without resupply</div>
+      ${gaps.map(([a,b,km])=>`<div class="gap-row"><div><b>${a}</b><div class="sub">${b}</div></div><div class="d">${distStack(km)}</div></div>`).join("")}
+      <div class="hint">Distances from Laura's guide (official rally route); last row estimated from the GPX.</div>
+    </div>
+    <div class="alert w"><b class="h">Cash & cell signal</b><ul>
+      <li>Bring small bills for self-pay camps: Peppersauce ($15 cash), Parker Canyon ($20), Peña Blanca ($15), General Hitchcock.</li>
+      <li>No or little signal: Peppersauce Canyon, Mt Lemmon (patchy), Parker Canyon Lake. This app works fully offline once installed (see below).</li>
+      <li>US emergency number: <b>911</b>. Near the border (days 6–7) expect lots of Border Patrol. Carry your passport/ID.</li>
+    </ul></div>
+    <div class="card"><div class="eyebrow">Conversions</div>
+      <div class="stats">
+        <div class="stat"><div class="k">1 mi</div><div class="v">1.61 km</div></div>
+        <div class="stat"><div class="k">1,000 ft</div><div class="v">305 m</div></div>
+        <div class="stat"><div class="k">1 L</div><div class="v">34 fl oz</div></div>
+        <div class="stat"><div class="k">10 km</div><div class="v">6.2 mi</div></div>
+        <div class="stat"><div class="k">1,000 m</div><div class="v">3,281 ft</div></div>
+        <div class="stat"><div class="k">30 °C</div><div class="v">86 °F</div></div>
+      </div>
+      <div class="hint">°F → °C: (°F − 32) × 5/9. 100 °F ≈ 38 °C, 40 °F ≈ 4 °C.</div>
+    </div>
+    <div class="card"><div class="eyebrow">About this data</div>
+      <p class="sub" style="margin:0">Stages, elevation profiles and daily distances come from the provisional Komoot GPX tracks (as of Sep 10, 2026). Stops come from Laura's resupply guide (GRL PCK) and your planning sheet. Check opening hours and prices locally, and call small stores ahead.</p>
+      <p class="sub" style="margin:0">Offline: open this page once with internet, then add it to your home screen (iPhone: Safari → Share → Add to Home Screen; Android: Chrome → ⋮ → Install app). After that it works without signal. Your unit choice and current distance are remembered on this device. <b>${offlineMsg()}</b></p>
+    </div>`;
+}
+
+const R={now:renderNow,days:renderDays,stops:renderStops,info:renderInfo};
+function setView(v){ view=v; save();
+  document.querySelectorAll("nav.tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===v));
+  document.querySelectorAll("section.view").forEach(s=>s.hidden=s.id!=="v-"+v);
+  R[v](); window.scrollTo(0,0); }
+function renderAll(){ document.getElementById("u-metric").setAttribute("aria-pressed",!imperial); document.getElementById("u-imp").setAttribute("aria-pressed",imperial); R[view](); }
+document.querySelectorAll("nav.tabs button").forEach(b=>b.onclick=()=>setView(b.dataset.v));
+document.getElementById("u-metric").onclick=()=>{imperial=false;save();renderAll()};
+document.getElementById("u-imp").onclick=()=>{imperial=true;save();renderAll()};
+const h=location.hash.slice(1); if(R[h]) view=h;
+setView(view); renderAll();
+</script>
+
+<script>
+if("serviceWorker" in navigator){
+  window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{})});
+  navigator.serviceWorker.addEventListener("controllerchange",()=>{if(typeof view!=="undefined"&&view==="info")renderInfo()});
+}
+</script>
+</body>
+</html>
